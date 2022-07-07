@@ -6,6 +6,7 @@ class Prefs (val context: Context) {
     val DATABASE = "MyDB"
     val USER_NAME = "UserName"
     val COLOR = "Color"
+    val SPINER = "spiner"
     val storage = context.getSharedPreferences(DATABASE,Context.MODE_PRIVATE)
 
     fun saveName (name:String) {
@@ -22,6 +23,14 @@ class Prefs (val context: Context) {
     }
     fun wipeData(){
         storage.edit().clear().apply()
+    }
+
+
+    fun saveSpiner (Color: Int) {
+        storage.edit().putInt(SPINER, Color ).apply()
+    }
+    fun getSpiner():Int {
+        return storage.getInt(SPINER, 0)
     }
 
 }

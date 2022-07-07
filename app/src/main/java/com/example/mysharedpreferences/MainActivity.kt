@@ -3,6 +3,9 @@ package com.example.mysharedpreferences
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.mysharedpreferences.SharedPreferences.Companion.prefs
 import com.example.mysharedpreferences.databinding.ActivityMainBinding
@@ -16,6 +19,12 @@ class MainActivity : AppCompatActivity() {
 
         initUI()
         checkUserValues()
+        spiner()
+
+
+
+
+
 
     }
 
@@ -48,6 +57,38 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "debe rellenar el nombre", Toast.LENGTH_LONG).show()
         }
 
+    }
+
+
+    fun spiner (){
+
+        val adaptador: ArrayAdapter<*> = ArrayAdapter.createFromResource(this, R.array.Colores
+            ,android.R.layout.simple_spinner_item)
+
+        b.spinner.adapter = adaptador
+        b.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+
+            ) {
+
+
+
+
+
+
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                Toast.makeText(this@MainActivity, "sin seleccion", Toast.LENGTH_SHORT).show()
+
+            }
+
+
+
+        }
     }
 
 
