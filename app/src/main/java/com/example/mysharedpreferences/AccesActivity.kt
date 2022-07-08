@@ -25,10 +25,26 @@ class AccesActivity : AppCompatActivity() {
          val userName = prefs.getName() //llamamos al username que tenemos guardado en la funcion de prefs USER_NAME
          b.tvName.text = "!HOLA $userName!"
          if (prefs.getColorCheck()) {
-             b.cardView.setBackgroundColor(ContextCompat.getColor(this, R.color.layout))
+
+
+             val theColor = getMyColor(prefs.getColor())
+             b.cardView.setBackgroundColor(
+                 ContextCompat.getColor(this, theColor)
+             )
          }
 
     }
 
-
+    fun getMyColor(color:String):Int{
+        val resourceColor = when(color){
+            "Rojo"-> R.color.rojo
+            "Verde"-> R.color.verde
+            "Amarillo"-> R.color.amarillo
+            "Naranja"-> R.color.naranja
+            "Azul"-> R.color.azul
+            "Violeta"-> R.color.violeta
+            else ->  R.color.white
+        }
+        return resourceColor
+    }
 }
